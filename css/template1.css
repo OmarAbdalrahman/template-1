@@ -1,0 +1,610 @@
+*{
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;/*css3*/  /*معناها متخليش ال border and padding يزودوا العرض بتاع العنصر وياخدوا من العرض الي موجود */
+}
+.body{
+    font-family: 'varela Round' ,sans-serif;
+}
+.container{
+    width: 80%;
+   
+    margin: auto;/*علشان اوسطن العنصر */
+}
+.clear{
+    clear: both ;
+}
+h1 , h2 ,h3 ,h4 ,h5 ,h6 {
+    font-family: montserrat , sans-serif;
+}
+button{
+    font-family: inherit; /*معناها ورث نفس الخط من ال body*/
+}
+.padding-y{
+    padding: 120px 0;
+}
+.section-header{
+    text-align: center;
+    margin-bottom:20px ;
+
+}
+.section-header .section-title{
+    font-size: 35px;
+    text-transform: capitalize;/*بيخلي اول كل كلمه كابتل */
+    /* margin-bottom: 10px; */ /*ممكن اكتب دي او ادي لل line {margin-top}*/
+    
+}
+.section-header .line {
+    display: block;
+    height: 5px;
+    width: 80px;
+    margin:0 auto 70px auto;/*علشان توسطن اي عنصر */
+    background-color: #6195ff; 
+     margin-top: 10px; 
+}
+.ltr-effect{
+    position: relative;
+}
+.ltr-effect::after{
+    position: absolute;
+    content: "";
+    width: 0;
+    background-color: gray;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: width 0.5s;
+    z-index: -1;/*علشان يظهر ورا العنصر*/
+}
+.ltr-effect:hover::after{
+    width: 100%;
+}
+.tb-effect{
+    position: relative;
+}
+.tb-effect::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0;
+    background-color:black;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: height 0.5s;
+    z-index: -1;/*علشان يظهر ورا العنصر*/
+}
+.tb-effect:hover::after{
+    height: 100%;   /*علشان اخلي التاثير الظل من فوق لتحت بدي الارتفاع صفر و بقوله لما تشاور عليها ادي الارتفاع وبكده بيطلع من فوق لتحت*/
+}
+/*general*/
+.header{ 
+    /* background-color: grey; */
+    width: 100%;/*positio:fixed ,absolute ; بيحولوا العنصر من display:block الي display:inline-block*/
+    position: fixed;
+    z-index: 10;/*علشان احط عنصر فوق عنصر */
+}
+.header .logo {
+    width: 40%;
+    /* background-color: red; */
+float: left;
+}
+.header .nav {
+    width: 60%;
+    /* background-color: aqua; */
+    float: left;
+ list-style: none;
+ text-align: right;/*اي حاجه جوه ال ul خليها علي اليمين*/
+}
+
+
+.header .logo img {
+    width: 20%; 
+}
+.header .nav > li{
+    display: inline-block;
+    /* width: 70px; */
+    text-align: center;
+}
+.header .nav > li > a {/*padding اتحطط هنا علشان اوسع مساحت الينك مش ال li */
+    text-decoration: none;
+    color: aliceblue;
+    display: block;
+    padding: 30px 15px;
+}
+.header .nav > li > a:after ,/*>علامت دي معناها هاتلي اولاد فقط من غير الاحفاد */
+.header .nav > li > a.active:after{/*grouping معناها جمعت عنصرين او اكثر ليهم نفس الخصائص مع بعض في كود واحد*/
+    background-color: #6195ff;
+    /* width: 0; */
+    height: 2px;
+    display: block;
+    content: "";
+    margin-top: 3px; /*علشان تنزل الخط شويه لتحت*/
+}
+.header .nav > li > a:after{
+    /* background-color: #6195ff; */
+    width: 0;
+    /* height: 2px; */
+    /* display: block; */
+    /* content: ""; */
+/*ده علشان احط خط تحت الينك ولازم احط محتوي فاضي علشان يشتغل */
+/* transition: width .5s; */
+}
+.header .nav > li > a.active:after{/*هنا الخط ثابت ليه ؟لانك مديله عرض 100*/
+    width: 100%;
+
+}
+.header .nav > li > a:hover::after{/*معناها لما اشاور علي ال a هاتلي الafter بتاعاه واظهر الخصائص التاليه */
+    width: 100%;
+transition: width .5s;
+
+}
+.dropdown{
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    background-color: #6195ff;
+    width: 140px;
+    text-align: center;
+    /* text-decoration: none; */
+    display: inline-block;
+    left: -30%;
+    top: 70%;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;/*علشان اخفي ال dropdown*/
+    transition: opacity 2s , visibility 2s;
+ }
+.dropdown-menu a{
+    text-decoration: none;
+    color:#fff;
+   display: block;
+
+}
+.dropdown:hover .dropdown-menu{/*علشان اظهر ال dropdown معناها لما اشاور علي ال ul اظهرلي الينك الي جواها */
+    opacity: 1;/*غير شفاف */
+    visibility:visible ;/*الرويه */
+}
+/*home section*/
+.HOME{
+    height: 100vh;
+    background-image: url(../images/background1.jpg);
+    background-size: cover;/*يعني خليلي الصوره تبقا علي قد الصفحه بالظبط*/
+    position: relative;
+}
+.overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0%;
+    background-color:rgba(0,0,0,0.7);
+}
+.hover-opacity :hover {
+    opacity: 0.8 ;
+
+}
+.home-content{
+    /* background-color: green;  */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /*hero image*/
+    text-align: center;
+}
+.HOME .title{
+    color:white;
+    font-size: 3rem;
+
+}
+.home-p{
+    margin-top: 10px;
+    color: white;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    line-height: 1;
+
+}
+.home .btn{
+    width: 160px;
+    border-radius: 5px;/*بيخلي حواف الزرار ناعمه*/
+    border: 0;
+    padding: 10px 0;
+    cursor: pointer;/*بيتحكم في شكل الموس */
+    font-size: 20px;/*ابعد الكلام جوه الزرار */
+}
+.home .btn-start{
+    margin-right: 10px;
+    background-color: #fff;
+
+}
+.home .btn-more{
+    background-color: #6195ff;
+    color: #fff;
+}
+.btn:hover{ /*علشان اعمل ظل للزرار */
+    opacity: 0.8;/*تظليل*/
+}
+.btn{
+    transition: opacity .5s;/*علشان اخلي تظليل الزرار ياخدا نص ثانيه  لما اشاور عليه */
+}
+
+
+
+/*about  section*/
+.about-item{
+    width: 30%;
+    float: left;
+    text-align: center;
+    border: 2px solid black;
+    padding: 50px 25px;
+    font-size: larger;
+}
+.about-item .icon{
+    color: #6195ff;
+    margin-bottom: 10px;
+}
+.about-item.mg{/*معناها ان في عنصر واحد واخد الclasses دي مع بعض*/
+margin:0 5%;/*top and bottom 0 left and r 5%*/
+}
+.about-item-title{
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    transition: color .5s;
+}
+.about-item-p{
+    line-height: 1.6;
+    margin-bottom:10px;
+    color: #000;
+}
+.about-item-link{
+    color: #6195ff;
+    text-transform: capitalize;
+}
+.about-item:hover .about-item-title{
+    color: #fff;
+}
+.portfolio-section{
+    background-color: #f9f9f9;
+}
+.portfolio-section-item{
+    width: 30%;
+    float: left;
+    margin-bottom: 60px;
+    position: relative;
+    padding: 15px;/*عملتها ليه ؟ علشان اخلي الصوره اصغر من الباك جروند */
+    /*والباك جروند متاثريتش ليه علشان مديين للlayer position :absolute*/
+    
+}
+.portfolio-section-item .layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.5);/*علشان اخلي الون الباك جروند شفاف */
+    opacity: 0;
+    transition: opacity .7s;
+}
+.portfolio-section-item:hover .layer{
+    opacity: 1;
+}
+.layer .layer-2{
+    position: absolute;
+    /* background-color: #6195ff; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+text-align: center;
+}
+.layer .layer-h1{
+  color: white;
+  padding-bottom: 20px;
+text-transform: capitalize;
+}
+.layer i {
+    background-color: #6195ff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;/*علشان اوسطن الايكون جوه الباك جروند ولازم ياخد نفس الارتفاع*/
+   color: #fff;
+}
+
+.layer .category{
+text-transform: capitalize;
+    display: block;
+    margin-bottom: 10px;
+    color: #6195ff;
+
+}
+
+.portfolio-section-item img{
+    width: 100%;
+}/*معناها خلي حجم الصوره 100%من اصل ال 30% بتوع الاب */
+.portfolio-section-item.mg{
+    margin: 0 5%;
+}
+/*offer section*/
+.offer-item{
+    width: 30%;
+    float: left;
+    margin-bottom: 10px;
+    border: 1px solid #e8e8ee;
+    padding: 20px 15px 20px 70px;
+     position: relative;    
+}
+.offer-item.mg{
+    margin: 0 5%;
+}
+.offer-item .icon1{
+    position: absolute;/*علشان اثبت الايكون ناحية الشمال */
+   left: 15px;
+   top: 30 px;
+   font-size: xx-large;    
+   color: #6195ff;   
+}
+.offer-title{
+    font-size: x-large;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    transition: color .7s;    
+        
+}
+
+.offer-p{
+    font-size: x-large;
+    margin-bottom: 20px;
+    line-height: 1.6;/*معناها ابعد الحروف عن بعض*/
+    text-transform: capitalize;
+    color:brown ;
+    transition: color .7s;    
+}
+.offer-item:hover .offer-title{
+    color: #e8e8ee;
+}
+.offer-item:hover .offer-p{
+    color: #6195ff;
+    
+}
+/*services section*/
+.services{
+    background-color: #f9f9f9;
+
+}
+.services-item{
+    width: 50%;
+    float: left;
+}
+.services-item .section-header{
+    text-align: left; /*دي علشان اخلي الكلام الي في header اخليه في الشمال بدل النص */
+/* margin-bottom: 10px;     */
+}
+.services-item .section-header .line{
+    margin: 0 0 80px 0;
+    
+}
+.services-p{
+    line-height: 1.6;
+    color: #999;
+    padding-right: 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.services-list{
+    list-style: none;
+}
+.services-list li i{
+    border: #6195ff 1px solid ;
+  color: #6195ff;
+  border-radius: 50% ;/*بتدي border علي شكل دايره*/ 
+ padding: 10px 7px;  
+}
+.services-list li{
+    margin-bottom: 10px;
+}
+.services-img img {
+    width:100%;
+
+}
+.ul-img{
+    list-style: none;
+    text-align: center;
+
+}
+.ul-img li{
+width: 10px;
+height: 10px;
+display: inline-block;
+background-color: #999;
+margin: 10px 5px;
+border-radius: 50%;
+}
+.ul-img li.active{
+    background-color: #6195ff;
+}
+.ul-img li:hover{
+    background-color: #6195ff;
+}
+
+/*numbers section*/
+.numbers{
+    position: relative;
+    background-image: url(../images/background2.jpg);
+    height: 300px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.numbers-item{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.numbers-item .icon{
+    color: #6195ff;
+    margin-bottom: 15px;
+}
+.numbers-title{
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    color: #e8e8ee;
+}
+/*pricing section*/
+.pricing-item{
+    float: left;
+    width: 30%;
+    padding: 20px 15px;
+    border: #999 1px solid;
+    text-align: center;
+}
+.pricing-item.mg {
+    margin: 0 5%;
+}
+.pricing-list{
+    list-style: none;
+
+}
+.pricing-title{
+    text-transform: uppercase;/*يعني كل الحروف كبيره */
+    color: #999;
+    font-size: 17px;
+}
+.pricing-permonth{
+    border: 2px #6195ff solid  ;
+    width: 100px;
+    height: 100px;
+    padding: 25px 0;
+    margin: 15px auto;/*دي علشان اوسط عنصر واخد width*/
+  border-radius: 50%;    
+}
+.pricing-permonth .doller{
+    font-size: 30px;
+}
+.pricing-permonth .month{
+    text-transform: uppercase;
+}
+.pricing-list li {
+    line-height: 1.9;
+    color:black;
+    text-transform: capitalize;
+}
+.pricing-botton{
+    border: 0;
+    background: none;
+    /* margin-top: 10px; */
+    padding: 10px;
+    border: #6195ff 4px solid;
+    color: #6195ff;
+    width: 140px;
+    margin: 19px auto 0 auto;
+    display: block;
+    /* height: 50px; */
+}
+.pricing-item:hover .pricing-permonth{
+    color: #f9f9f9;
+    transition: color .6s;    
+}
+.pricing-item:hover .pricing-title{
+    color: #f9f9f9;
+    transition: color .6s;
+}
+ .pricing-item:hover li {
+    color: #6195ff;
+}
+/*team-secion*/
+.team-item{
+    width: 30%;
+    float: left;
+    background-color: #e8e8ee;
+    text-align: center;
+}
+.team-item.tb-effect{
+    z-index: 1;
+}
+.team-item:hover .team-h3{
+    color: #e8e8ee;
+    transition: color .9s;
+
+}
+.team-item:hover .team-span{
+    color: #6195ff;
+    transition: color .9s;
+}
+
+.team-item.mg{
+    margin: 0 5%;
+}
+.team-h3{
+    color:black ;
+    margin: 10px 0;    
+}
+.team-span{
+    color: #999;
+    text-transform: uppercase;/*الحروف كلها كبتل*/
+     
+}
+.team-item .team-img {
+    position: relative;
+ margin: auto;    
+}
+.team-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+   background-color: rgba(0,0,0,0.5);
+   opacity: 0;/*الشفافيه*/
+   visibility: hidden;
+   transition: opacity .9s , visibility .9s;
+}
+.team-img:hover .team-overlay{
+    opacity: 1;
+    visibility: inherit;
+}
+.team-overlay a{
+    width: 40px;
+    height: 40px;
+     display: block;
+    background-color: #6195ff;
+ margin-left: auto;    /*معناها انه بيزق العنصر كله ناحة الشمال */
+}
+.blog-item{
+    width: 30%;
+    background-color: #e8e8ee;
+    float: left;
+}
+.blog-info{
+    padding: 20px;
+}
+.blog-item .blog-img img{
+    width: 100%;
+}
+.blog-item.mg{
+    margin: 0 5%;
+}
+.blog-item .blog-list{
+    list-style: none;
+}
+.blog-list li{
+    display: inline-block;
+    color: #6195ff;
+    margin: 0 5px;
+}
+
+.get-item{
+    float: left;
+    width: 30%;
+
+}
+.get-item.mg{
+    margin: 0 5%;
+    }
+    .get-item i {
+        color: #6195ff;
+    }
